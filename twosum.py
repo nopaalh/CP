@@ -5,17 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        panjangList = len(nums)
-        hasil = []
-        for indices , isi in enumerate(nums):
+        kamus = {}
+
+        for indeks, isi in enumerate(nums):
             selisih = target - isi
-            for index , sasaran in enumerate(nums[indices + 1:]):
-                if sasaran == selisih:
-                    hasil.append(indices)
-                    hasil.append(index + indices + 1)
-
-        return hasil
-
-
-        return hasil
-        
+            if selisih in kamus:
+                return [kamus[selisih],indeks]
+            kamus[isi] = indeks

@@ -21,26 +21,26 @@ class Solution(object):
             "L" : 50,
             "C" : 100,
             "D" : 500,
-            "M" : 100          
+            "M" : 1000          
         }
         jumlah = 0
         indeksAkhir = 0
-        indeksAwal = -1
-        panjangList = len(s) - 1
+        indeksAwal = 0
+        panjangList = len(s)
 
-        while s[indeksAkhir] < panjangList or s[indeksAwal] < panjangList:
-            if kamus[s[indeksAkhir]] > kamus[s[indeksAkhir + 1]]:
-                jumlah += kamus[s[indeksAkhir]]
-                indeksAkhir += 1
+        while indeksAwal < panjangList:
+            if indeksAwal == panjangList - 1:
+                jumlah += kamus[s[indeksAwal]]
+                break
+            
+            elif kamus[s[indeksAwal]] >= kamus[s[indeksAwal + 1]]:
+                jumlah += kamus[s[indeksAwal]]
+                indeksAwal += 1
             else:
-                temp = kamus[s[indeksAkhir + 1]] - kamus[s[indeksAkhir]]
+                temp = kamus[s[indeksAwal + 1]] - kamus[s[indeksAwal]]
                 jumlah += temp
-                indeksAkhir += 2
+                indeksAwal += 2
 
-        # for indeksAwal in s:
-        #     indeksAkhir = indeksAwal + 1
-        #     if kamus[s[indeksAkhir]] < kamus[s[indeksAwal]]:
-        #         jumlah = kamus[s[indeksAwal]]
-        #     else:
+        return jumlah
 
                 
